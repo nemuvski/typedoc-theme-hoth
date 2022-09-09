@@ -33,5 +33,15 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
     '@typescript-eslint/no-namespace': 'off',
+    'import/order': [
+      'warn',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+        pathGroups: [],
+        pathGroupsExcludedImportTypes: ['builtin', 'external'],
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        warnOnUnassignedImports: true,
+      },
+    ],
   },
 }
