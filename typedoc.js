@@ -1,18 +1,24 @@
 /** @type {import('typedoc').TypeDocOptions} */
 const options = {
-  name: 'typedoc-theme-hoth',
-  entryPoints: ['src/index.tsx'],
+  entryPoints: ['example/src'],
   cleanOutputDir: true,
   out: 'preview',
-  readme: 'README.md',
+  readme: 'example/README.md',
   exclude: [],
-  excludePrivate: true,
-  excludeInternal: true,
-  disableSources: true,
   includeVersion: true,
   githubPages: false,
   hideGenerator: false,
-  darkHighlightTheme: 'dark-plus',
+  tsconfig: 'example/tsconfig.json',
+  sort: ['source-order'],
+  media: 'example/media',
+  categorizeByGroup: false,
+  searchCategoryBoosts: {
+    Component: 2,
+    Model: 1.2,
+  },
+  searchGroupBoosts: {
+    Classes: 1.5,
+  },
 
   // NOTE: Check the build output
   plugin: ['./dist'],

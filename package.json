@@ -23,7 +23,7 @@
     "prebuild": "npm run checkall && rimraf dist",
     "build": "tsc",
     "postbuild": "rollup -c",
-    "prepreview": "cp -r dist node_modules/typedoc-theme-hoth && rimraf preview && typedoc",
+    "prepreview": "rimraf preview && yarn --cwd ./example install --silent --frozen-lockfile && typedoc",
     "preview": "reload --dir=preview --browser"
   },
   "devDependencies": {
