@@ -1,0 +1,50 @@
+@use "../variables" as *;
+@use "../mixins/breakpoint" as *;
+
+.l-page {
+  display: flex;
+
+  &__region-sidebar {
+    flex-shrink: 0;
+    width: var(--theme-width-region-sidebar);
+    min-height: 100vh;
+    border-right: 1px solid var(--theme-color-border);
+  }
+
+  &__region-toolbar,
+  &__region-content {
+    width: 100%;
+
+    @include bp-up($bp-up-md) {
+      width: calc(100% - var(--theme-width-region-sidebar));
+    }
+  }
+
+  &__region-toolbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    z-index: var(--theme-depth-layer-nav);
+    height: var(--theme-height-region-toolbar);
+    border-bottom: 1px solid var(--theme-color-border);
+  }
+
+  &__region-content {
+    padding-top: calc(var(--theme-height-region-toolbar) + 2rem);
+  }
+
+  &__region-content-inner {
+    width: 100%;
+    max-width: var(--theme-max-width-region-content-inner);
+    padding: 0 0.75rem;
+    margin: 0 auto;
+
+    @include bp-up($bp-up-md) {
+      padding: {
+        right: 1.5rem;
+        left: 1.5rem;
+      }
+    }
+  }
+}

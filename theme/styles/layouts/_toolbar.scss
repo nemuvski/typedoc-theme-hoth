@@ -1,0 +1,13 @@
+@use "../variables" as *;
+@use "../mixins/breakpoint" as *;
+
+.l-toolbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 0.5rem;
+  background-color: var(--theme-color-toolbar-bg);
+  backdrop-filter: blur(0.5rem);
+}

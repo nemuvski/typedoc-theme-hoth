@@ -5,7 +5,7 @@ const options = {
   out: 'preview',
   readme: 'example/README.md',
   exclude: [],
-  includeVersion: true,
+  includeVersion: false,
   githubPages: false,
   hideGenerator: false,
   tsconfig: 'example/tsconfig.json',

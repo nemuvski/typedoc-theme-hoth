@@ -6,12 +6,13 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noEmit": false,
+    "removeComments": true,
+    "outDir": "dist",
     "jsx": "react",
     "jsxFactory": "JSX.createElement",
     "jsxFragmentFactory": "JSX.Fragment",
-    "noEmit": false,
-    "outDir": "dist"
   },
   "include": ["src"],
-  "exclude": ["src/theme/"]
+  "exclude": ["theme", "example"]
 }

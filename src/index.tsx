@@ -1,17 +1,15 @@
-import { Application, JSX } from 'typedoc'
-import HothTheme from './theme'
-import { THEME_NAME } from './constants'
+import { join } from 'node:path'
+import { RendererEvent, type Application } from 'typedoc'
+import { copySync } from './libs/fs'
+import HothTheme from './templates'
 
 export function load(app: Application) {
-  // app.options.getValue()
-
-  app.renderer.hooks.on('head.end', (ctx) => {
-    return <link rel='stylesheet' href={ctx.relativeURL('assets/theme.css')} />
+  app.listenToOnce(app.renderer, {
+    [RendererEvent.END]: (event: RendererEvent) => {
+      // Ship theme assets: [MODULE_DIR]/dist/assets/ -> [CREATED_DOC_DIR]/assets/theme/
+      copySync(join(__dirname, 'assets'), join(event.outputDirectory, 'assets', 'theme'))
+    },
   })
 
-  // app.renderer.hooks.on('body.end', (ctx) => {
-  //   return <script src={ctx.relativeURL('assets/theme-hoth.js')}></script>
-  // })
-
-  app.renderer.defineTheme(THEME_NAME, HothTheme)
+  app.renderer.defineTheme('hoth', HothTheme)
 }

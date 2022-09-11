@@ -28,7 +28,6 @@ module.exports = {
   rules: {
     semi: 'off',
     'comma-dangle': ['error', 'only-multiline'],
-    'multiline-ternary': ['error', 'always-multiline'],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],

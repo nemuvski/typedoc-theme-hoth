@@ -1,0 +1,35 @@
+@use "../variables" as *;
+@use "../mixins/breakpoint" as *;
+
+html {
+  font-size: var(--theme-font-size-sp);
+
+  @include bp-up($bp-up-md) {
+    font-size: var(--theme-font-size);
+  }
+}
+
+body {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--theme-color-text);
+  background-color: var(--theme-color-bg);
+  scroll-margin-top: calc(var(--theme-height-region-toolbar) + 2rem);
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 1.15rem;
+}
+h5,
+h6 {
+  font-size: 1rem;
+}

@@ -1,0 +1,24 @@
+@use "../mixins/color-scheme" as *;
+
+:root {
+  --theme-font-size: 16px;
+  --theme-font-size-sp: 15px;
+
+  --theme-depth-layer-nav: 30;
+
+  --theme-max-width-region-content-inner: 75rem;
+  --theme-width-region-sidebar: 18rem;
+  --theme-height-region-toolbar: 4rem;
+
+  --theme-color-bg: #fff;
+  --theme-color-text: #2c3333;
+  --theme-color-border: #f2f2f5;
+  --theme-color-toolbar-bg: rgba(255 255 255 / 0.75);
+}
+
+@include dark-color-scheme() {
+  :root {
+    --theme-color-bg: #001e3c;
+    --theme-color-text: #f5f5f8;
+  }
+}
