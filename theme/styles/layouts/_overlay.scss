@@ -1,0 +1,31 @@
+@use "../variables" as *;
+@use "../mixins/breakpoint" as *;
+@use "../mixins/is-open-sidebar" as *;
+
+.l-overlay {
+  display: none;
+
+  @include bp-down($bp-down-md) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: var(--theme-depth-layer-hidden);
+    display: block;
+    cursor: pointer;
+    background-color: var(--theme-color-overlay-bg);
+    backdrop-filter: blur(0.1rem);
+    opacity: 0;
+    transition: opacity var(--theme-transition-function) var(--theme-traisition-duration);
+  }
+}
+
+@include is-open-sidebar() {
+  .l-overlay {
+    @include bp-down($bp-down-md) {
+      z-index: var(--theme-depth-layer-overlay);
+      opacity: 1;
+    }
+  }
+}

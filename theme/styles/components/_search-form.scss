@@ -1,0 +1,81 @@
+@use "../variables" as *;
+@use "../mixins/breakpoint" as *;
+@use "../mixins/reset-list-style" as *;
+
+.c-search-form {
+  position: relative;
+
+  width: 15rem;
+  height: 2.5rem;
+
+  @include bp-up($bp-up-md) {
+    width: 25rem;
+  }
+  @include bp-up($bp-up-lg) {
+    width: 28rem;
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    z-index: var(--theme-depth-layer-misc);
+    display: block;
+    transform: translateY(-50%);
+
+    > svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding: {
+      top: 0;
+      right: 0.5rem;
+      bottom: 0;
+      left: 2.25rem;
+    }
+    background-color: var(--theme-color-bg);
+    border: 1px solid var(--theme-color-border);
+  }
+
+  &__results {
+    @include reset-list-style();
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    width: 20rem;
+    overflow: hidden;
+    visibility: hidden;
+    background-color: var(--theme-color-bg);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.25rem var(--theme-color-overlay-bg);
+
+    @include bp-up($bp-up-xs) {
+      width: 30rem;
+    }
+    @include bp-up($bp-up-sm) {
+      width: 35rem;
+    }
+    @include bp-up($bp-up-md) {
+      width: 40rem;
+    }
+  }
+
+  // NOTE: .has-focus is given by asset of typedoc js
+  &.has-focus > .c-search-form__results {
+    visibility: visible;
+
+    a {
+      display: block;
+      padding: 0.6rem 0.8rem;
+    }
+
+    > li.current {
+      background-color: var(--theme-color-search-current-select-bg);
+    }
+  }
+}

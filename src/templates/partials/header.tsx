@@ -1,5 +1,6 @@
 import { JSX, ReflectionKind } from 'typedoc'
-import { isDeclarationReflection } from '../../libs/assertion'
+import { isDeclarationReflection, isSignatureReflection } from '../../libs/assertion'
+import { join } from '../../libs/element'
 
 const header: TypeDocElement = (context, props) => {
   const { model } = props
@@ -7,6 +8,11 @@ const header: TypeDocElement = (context, props) => {
   let name = model.name
   if (isDeclarationReflection(model) && model.version) {
     name += `v${model.version}`
+  }
+  if (isDeclarationReflection(model) || isSignatureReflection(model)) {
+    if (model.typeParameters && model.typeParameters.length) {
+      name += `<${join(', ', model.typeParameters, (item) => item.name)}>`
+    }
   }
 
   return (

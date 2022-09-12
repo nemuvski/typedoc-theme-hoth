@@ -8,10 +8,16 @@ import { terser } from 'rollup-plugin-terser'
 const INPUT_DIR_PATH = join('theme')
 const OUTPUT_DIR_PATH = join('dist', 'assets')
 const OUTPUT_CSS_PATH = join(OUTPUT_DIR_PATH, 'theme.css')
+const OUTPUT_JS_PATH = join(OUTPUT_DIR_PATH, 'theme.js')
 
 /** @type {import('rollup').RollupOptions} */
 const options = {
   input: join(INPUT_DIR_PATH, 'index.ts'),
+  output: {
+    file: OUTPUT_JS_PATH,
+    format: 'iife',
+    sourcemap: false,
+  },
   plugins: [
     typescript({ tsconfig: join(INPUT_DIR_PATH, 'tsconfig.json') }),
     scss({

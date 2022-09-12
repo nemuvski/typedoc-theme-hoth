@@ -1,2 +1,27 @@
+@use "../mixins/reset-list-style" as *;
+@use "../mixins/hoverable" as *;
+
 .c-breadcrumb {
+  @include reset-list-style();
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--theme-color-sub-text);
+
+  &__item--icon > svg {
+    width: 1rem;
+    vertical-align: unset;
+  }
+
+  &__item-content--link {
+    text-decoration: none;
+
+    @include hoverable() {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }

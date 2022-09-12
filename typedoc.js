@@ -19,6 +19,8 @@ const options = {
   searchGroupBoosts: {
     Classes: 1.5,
   },
+  lightHighlightTheme: 'dracula',
+  darkHighlightTheme: 'dracula',
 
   // NOTE: Check the build output
   plugin: ['./dist'],

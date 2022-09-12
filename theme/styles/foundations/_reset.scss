@@ -65,10 +65,6 @@ select {
   font-weight: inherit;
 }
 
-code {
-  overscroll-behavior: contain;
-}
-
 button,
 [type="button"],
 [type="reset"],
@@ -86,7 +82,8 @@ button,
 }
 
 img,
-picture {
+picture,
+svg {
   display: inline-block;
   max-width: 100%;
   height: auto;

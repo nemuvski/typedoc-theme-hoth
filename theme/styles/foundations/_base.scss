@@ -17,6 +17,10 @@ body {
   scroll-margin-top: calc(var(--theme-height-region-toolbar) + 2rem);
 }
 
+input {
+  font-size: var(--theme-fixed-input-font-size);
+}
+
 h1 {
   font-size: 1.75rem;
 }
@@ -32,4 +36,17 @@ h4 {
 h5,
 h6 {
   font-size: 1rem;
+}
+
+a:not([class]) {
+  color: var(--theme-color-link);
+  text-decoration: none;
+}
+
+pre {
+  padding: 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior: contain;
+  line-height: 1.25;
+  border: 1px solid var(--theme-color-border);
 }

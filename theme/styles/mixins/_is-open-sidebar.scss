@@ -1,0 +1,7 @@
+@mixin is-open-sidebar() {
+  @at-root {
+    html.is-open-sidebar {
+      @content;
+    }
+  }
+}

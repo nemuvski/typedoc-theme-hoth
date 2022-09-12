@@ -1,11 +1,16 @@
 import { JSX } from 'typedoc'
+import { TSD_ID_SEARCH_SCRIPT, JSHOOK_CLOSE_SIDEBAR } from '../constants'
 
 const layout: TypeDocElement = (context, props) => {
   const htmlLang = context.options.getValue('htmlLang')
-  const highlightCss = context.relativeURL('assets/highlight.css')
+
+  const tsdHighlightCss = context.relativeURL('assets/highlight.css')
+  const tsdSearchJs = context.relativeURL('assets/search.js')
+  // NOTE: To use the search logic code
+  const tsdMainJs = context.relativeURL('assets/main.js')
+
   const themeCss = context.relativeURL('assets/theme/theme.css')
-  // const searchJs = context.relativeURL('assets/search.js')
-  // const mainJs = context.relativeURL('assets/main.js')
+  const themeJs = context.relativeURL('assets/theme/theme.js')
 
   const title = props.model.name === props.project.name ? props.project.name : `${props.model.name} | ${props.project.name}`
   const metaDescription = `Documentation for ${props.project.name}`
@@ -21,9 +26,11 @@ const layout: TypeDocElement = (context, props) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='description' content={metaDescription} />
         <title>{title}</title>
-        <link rel='stylesheet' href={highlightCss} />
+        <link rel='stylesheet' href={tsdHighlightCss} />
+        <script async src={tsdSearchJs} id={TSD_ID_SEARCH_SCRIPT} />
+
         <link rel='stylesheet' href={themeCss} />
-        {/*<script async src={searchJs} id='search-script' />*/}
+        <script async src={themeJs} />
 
         {context.hook('head.end')}
       </head>
@@ -35,11 +42,13 @@ const layout: TypeDocElement = (context, props) => {
           <div class='l-page__region-toolbar'>{context.toolbar(props)}</div>
 
           <div class='l-page__region-sidebar'>
-            <div class='l-page__region-branding'>{context.branding(props)}</div>
-            <div class='l-page__region-nav'>
-              {context.hook('navigation.begin')}
-              {context.navigation(props)}
-              {context.hook('navigation.end')}
+            <div class='l-page__region-sidebar-inner'>
+              <div class='l-page__region-branding'>{context.branding(props)}</div>
+              <div class='l-page__region-nav'>
+                {context.hook('navigation.begin')}
+                {context.navigation(props)}
+                {context.hook('navigation.end')}
+              </div>
             </div>
           </div>
 
@@ -55,6 +64,10 @@ const layout: TypeDocElement = (context, props) => {
             </div>
           </div>
         </div>
+
+        <div role='presentation' class='l-overlay' data-jshook={JSHOOK_CLOSE_SIDEBAR} />
+
+        <script src={tsdMainJs} />
 
         {context.analytics()}
 

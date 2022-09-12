@@ -7,10 +7,12 @@ const footer: TypeDocElementNonProps = (context) => {
     <div class='l-footer'>
       {!hideGenerator && (
         <p>
-          {'Generated using '}
-          <a href='https://typedoc.org/' target='_blank'>
-            TypeDoc
-          </a>
+          <small>
+            {'Generated using '}
+            <a href='https://typedoc.org/' target='_blank'>
+              TypeDoc
+            </a>
+          </small>
         </p>
       )}
     </div>
