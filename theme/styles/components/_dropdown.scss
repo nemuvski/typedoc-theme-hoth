@@ -10,12 +10,13 @@
   &__content {
     position: absolute;
     top: 3rem;
-    right: 0;
+    left: 50%;
     display: none;
     overflow: hidden;
     background-color: var(--theme-color-bg);
     border-radius: 0.25rem;
     box-shadow: 0 0 0.25rem var(--theme-color-overlay-bg);
+    transform: translateX(-50%);
 
     &.is-open {
       display: block;
