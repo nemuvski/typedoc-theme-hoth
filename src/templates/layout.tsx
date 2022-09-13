@@ -7,6 +7,7 @@ const layout: TypeDocElement = (context, props) => {
   const tsdHighlightCss = context.relativeURL('assets/highlight.css')
   const tsdSearchJs = context.relativeURL('assets/search.js')
   const tsdMainJs = context.relativeURL('assets/main.js')
+  // NOTE: Drop the default css provided by typedoc
 
   const themeCss = context.relativeURL('assets/theme/theme.css')
   const themeJs = context.relativeURL('assets/theme/theme.js')
