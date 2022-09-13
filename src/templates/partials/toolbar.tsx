@@ -1,21 +1,21 @@
 import { JSX } from 'typedoc'
 import { JSHOOK_OPEN_SIDEBAR, TSD_ID_SEARCH, TSD_ID_SEARCH_FIELD, TSD_CLASS_SEARCH_RESULTS, TSD_CLASS_PAGE_TOOLBAR } from '../../constants'
-import menuIcon from '../icons/menu'
-import searchIcon from '../icons/search'
+import menuIcon from '../static/menu-icon'
+import searchIcon from '../static/search-icon'
 
-const toolbar: TypeDocElement = (context, props) => {
+const toolbar: TypeDocElement = (context) => {
   return (
     <div class={`l-toolbar ${TSD_CLASS_PAGE_TOOLBAR}`}>
       <div class='l-toolbar__block-left'>
         <button type='button' aria-label='Toggle sidebar' data-jshook={JSHOOK_OPEN_SIDEBAR} class='c-toggle-sidebar-button'>
-          {menuIcon(context, props.model)}
+          {menuIcon()}
         </button>
       </div>
 
       <div class='l-toolbar__block-right'>
         <div id={TSD_ID_SEARCH} class='c-search-form' data-base={context.relativeURL('./')}>
           <label class='c-search-form__label' aria-label='Search' for={TSD_ID_SEARCH_FIELD}>
-            {searchIcon(context, props.model)}
+            {searchIcon()}
           </label>
           <input
             id={TSD_ID_SEARCH_FIELD}

@@ -1,12 +1,12 @@
 import { JSX } from 'typedoc'
-import chevronRightIcon from '../icons/chevron-right'
+import chevronRightIcon from '../static/chevron-right-icon'
 
 const breadcrumbChildren: TypeDocChildElement = (context, props) => {
   if (props.parent) {
     return (
       <>
         {breadcrumbChildren(context, props.parent)}
-        <li class='c-breadcrumb__item c-breadcrumb__item--icon'>{chevronRightIcon(context, props)}</li>
+        <li class='c-breadcrumb__item c-breadcrumb__item--icon'>{chevronRightIcon()}</li>
         <li class='c-breadcrumb__item'>
           {props.url ? (
             <a href={context.urlTo(props)} class='c-breadcrumb__item-content c-breadcrumb__item-content--link'>

@@ -14,4 +14,6 @@ declare global {
     R = JSX.Element | undefined,
     C extends DefaultThemeRenderContext = HothThemeContext
   > = (context: C, props: P) => R
+
+  type TypeDocStaticElement<R = JSX.Element> = () => R
 }

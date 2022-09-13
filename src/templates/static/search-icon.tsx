@@ -1,6 +1,6 @@
 import { JSX } from 'typedoc'
 
-const searchIcon: TypeDocChildElement = () => {
+const searchIcon: TypeDocStaticElement = () => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
