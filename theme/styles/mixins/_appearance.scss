@@ -1,0 +1,23 @@
+@mixin appearance-os() {
+  @at-root {
+    :root[data-appearance="os"] {
+      @content;
+    }
+  }
+}
+
+@mixin appearance-light() {
+  @at-root {
+    :root[data-appearance="light"] {
+      @content;
+    }
+  }
+}
+
+@mixin appearance-dark() {
+  @at-root {
+    :root[data-appearance="dark"] {
+      @content;
+    }
+  }
+}

@@ -1,8 +1,20 @@
 import { DefaultThemeRenderContext, JSX } from 'typedoc'
-import { JSHOOK_DROPDOWN_BUTTON, JSHOOK_DROPDOWN_CONTENT, TSD_CLASS_FILTER_ITEM, TSD_ID_PREFIX_FILTER } from '../../constants'
+import {
+  JSHOOK_DROPDOWN_BUTTON,
+  JSHOOK_DROPDOWN_CONTENT,
+  JSHOOK_APPEARANCE_INPUT,
+  TSD_CLASS_FILTER_ITEM,
+  TSD_ID_PREFIX_FILTER,
+  APPEARANCE_VALUE_OS,
+  APPEARANCE_VALUE_LIGHT,
+  APPEARANCE_VALUE_DARK,
+} from '../../constants'
 import { camelToTitleCase } from '../../libs/string'
 import { HothThemeContext } from '../index'
+import darkIcon from '../static/dark-icon'
 import filterIcon from '../static/filter-icon'
+import lightIcon from '../static/light-icon'
+import osIcon from '../static/os-icon'
 
 function buildFilterItem<C extends DefaultThemeRenderContext = HothThemeContext>(
   context: C,
@@ -41,25 +53,76 @@ const settings: TypeDocElementNonProps = (context) => {
     }
   }
 
-  if (!visibilityOptions.length) {
-    return <></>
-  }
-
   return (
     <div class='c-settings'>
       <div class='c-dropdown'>
         <button
           type='button'
-          aria-label='Toggle panel of settings'
+          aria-label='Change appearance'
           data-jshook={JSHOOK_DROPDOWN_BUTTON}
           class='c-button c-dropdown__toggle-button'
         >
-          {filterIcon()}
+          <i class='c-appearance-icon c-appearance-icon--os'>{osIcon()}</i>
+          <i class='c-appearance-icon c-appearance-icon--light'>{lightIcon()}</i>
+          <i class='c-appearance-icon c-appearance-icon--dark'>{darkIcon()}</i>
         </button>
         <div class='c-dropdown__content' data-jshook={JSHOOK_DROPDOWN_CONTENT}>
-          <ul class='c-settings__list'>{...visibilityOptions}</ul>
+          <form class='c-settings__list'>
+            <div class='c-settings__list-item'>
+              <label class='c-radio'>
+                <input
+                  data-jshook={JSHOOK_APPEARANCE_INPUT}
+                  type='radio'
+                  name='appearance'
+                  value={APPEARANCE_VALUE_OS}
+                  class='c-radio__input'
+                />
+                <span class='c-radio__label'>OS</span>
+              </label>
+            </div>
+            <div class='c-settings__list-item'>
+              <label class='c-radio'>
+                <input
+                  data-jshook={JSHOOK_APPEARANCE_INPUT}
+                  type='radio'
+                  name='appearance'
+                  value={APPEARANCE_VALUE_LIGHT}
+                  class='c-radio__input'
+                />
+                <span class='c-radio__label'>Light</span>
+              </label>
+            </div>
+            <div class='c-settings__list-item'>
+              <label class='c-radio'>
+                <input
+                  data-jshook={JSHOOK_APPEARANCE_INPUT}
+                  type='radio'
+                  name='appearance'
+                  value={APPEARANCE_VALUE_DARK}
+                  class='c-radio__input'
+                />
+                <span class='c-radio__label'>Dark</span>
+              </label>
+            </div>
+          </form>
         </div>
       </div>
+
+      {!!visibilityOptions.length && (
+        <div class='c-dropdown'>
+          <button
+            type='button'
+            aria-label='Change member visibility'
+            data-jshook={JSHOOK_DROPDOWN_BUTTON}
+            class='c-button c-dropdown__toggle-button'
+          >
+            {filterIcon()}
+          </button>
+          <div class='c-dropdown__content' data-jshook={JSHOOK_DROPDOWN_CONTENT}>
+            <ul class='c-settings__list'>{...visibilityOptions}</ul>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -1,0 +1,52 @@
+.c-radio {
+  display: inline-block;
+  padding: 0.25rem;
+  cursor: pointer;
+
+  > input[type="radio"] {
+    display: none;
+  }
+
+  &__label {
+    position: relative;
+    display: block;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      content: "";
+      background-color: var(--theme-color-unchecked);
+      border-radius: 50%;
+      transition: background-color var(--theme-transition-function) var(--theme-transition-duration);
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: var(--theme-color-bg);
+      border-radius: 50%;
+      transition: content var(--theme-transition-function) var(--theme-transition-duration);
+      transform: translate(0.25rem, -50%);
+    }
+  }
+
+  > input[type="radio"]:checked + .c-radio__label {
+    &::before {
+      background-color: var(--theme-color-checked);
+    }
+    &::after {
+      content: "";
+    }
+  }
+}

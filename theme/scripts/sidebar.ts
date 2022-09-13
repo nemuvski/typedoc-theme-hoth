@@ -1,11 +1,11 @@
 import { JSHOOK_CLOSE_SIDEBAR, JSHOOK_OPEN_SIDEBAR } from '../../src/constants'
 
 function openSidebar() {
-  document.querySelector('html')?.classList.add('is-open-sidebar')
+  document.documentElement.classList.add('is-open-sidebar')
 }
 
 function closeSidebar() {
-  document.querySelector('html')?.classList.remove('is-open-sidebar')
+  document.documentElement.classList.remove('is-open-sidebar')
 }
 
 export function setEventSidebar() {

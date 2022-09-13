@@ -4,7 +4,7 @@ export function setEventDropdown() {
   document.querySelectorAll(`button[data-jshook='${JSHOOK_DROPDOWN_BUTTON}']`).forEach((elm) => {
     elm.addEventListener(
       'click',
-      (e: Event) => {
+      (e) => {
         const currentTarget = e.currentTarget
         if (!(currentTarget instanceof HTMLElement)) {
           return
