@@ -1,0 +1,11 @@
+@use "../mixins/reset-list-style" as *;
+
+.c-settings {
+  &__list {
+    @include reset-list-style();
+  }
+
+  &__list-item {
+    padding: 0.25rem;
+  }
+}

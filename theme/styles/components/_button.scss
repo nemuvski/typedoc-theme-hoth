@@ -1,0 +1,16 @@
+@use "../mixins/hoverable" as *;
+
+.c-button {
+  appearance: none;
+  overflow: hidden;
+  background-color: var(--theme-color-bg);
+  border: 1px solid var(--theme-color-border);
+  border-radius: 0.4rem;
+  transition: background-color var(--theme-transition-function) var(--theme-transition-duration);
+
+  @include hoverable() {
+    &:hover {
+      background-color: var(--theme-color-clickable-hover-bg);
+    }
+  }
+}

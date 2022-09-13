@@ -1,5 +1,5 @@
 // JS
-import './scripts/index'
+import './scripts'
 
 // CSS
 import './styles/index.scss'

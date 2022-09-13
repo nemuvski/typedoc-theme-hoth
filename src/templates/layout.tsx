@@ -6,7 +6,6 @@ const layout: TypeDocElement = (context, props) => {
 
   const tsdHighlightCss = context.relativeURL('assets/highlight.css')
   const tsdSearchJs = context.relativeURL('assets/search.js')
-  // NOTE: To use the search logic code
   const tsdMainJs = context.relativeURL('assets/main.js')
 
   const themeCss = context.relativeURL('assets/theme/theme.css')

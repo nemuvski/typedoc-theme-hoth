@@ -18,11 +18,14 @@
   --theme-transition-function: ease;
   --theme-transition-duration: 0.3s;
 
-  --theme-color-bg: #fff;
   --theme-color-text: #2c3333;
   --theme-color-sub-text: #636366;
   --theme-color-link: #1687a7;
   --theme-color-border: #f2f2f5;
+  --theme-color-unchecked: #d0e7ed;
+  --theme-color-checked: #1687a7;
+  --theme-color-bg: #fff;
+  --theme-color-clickable-hover-bg: #f8f8fb;
   --theme-color-sidebar-bg: #fff;
   --theme-color-toolbar-bg: rgba(255 255 255 / 0.88);
   --theme-color-overlay-bg: rgba(0 0 0 / 0.45);

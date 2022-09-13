@@ -1,8 +1,12 @@
 export const JSHOOK_OPEN_SIDEBAR = 'open-sidebar'
 export const JSHOOK_CLOSE_SIDEBAR = 'close-sidebar'
+export const JSHOOK_DROPDOWN_BUTTON = 'dropdown-button'
+export const JSHOOK_DROPDOWN_CONTENT = 'dropdown-content'
 
+export const TSD_ID_PREFIX_FILTER = 'tsd-filter-'
 export const TSD_ID_SEARCH_SCRIPT = 'search-script'
 export const TSD_ID_SEARCH = 'tsd-search'
 export const TSD_ID_SEARCH_FIELD = 'tsd-search-field'
 export const TSD_CLASS_SEARCH_RESULTS = 'results'
 export const TSD_CLASS_PAGE_TOOLBAR = 'tsd-page-toolbar'
+export const TSD_CLASS_FILTER_ITEM = 'tsd-filter-item'

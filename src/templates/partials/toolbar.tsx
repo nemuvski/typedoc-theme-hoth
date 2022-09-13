@@ -13,6 +13,7 @@ const toolbar: TypeDocElement = (context) => {
       </div>
 
       <div class='l-toolbar__block-right'>
+        {context.settings()}
         <div id={TSD_ID_SEARCH} class='c-search-form' data-base={context.relativeURL('./')}>
           <label class='c-search-form__label' aria-label='Search' for={TSD_ID_SEARCH_FIELD}>
             {searchIcon()}

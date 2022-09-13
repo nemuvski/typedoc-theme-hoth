@@ -5,7 +5,7 @@
 .c-search-form {
   position: relative;
 
-  width: 15rem;
+  width: auto;
   height: 2.5rem;
 
   @include bp-up($bp-up-md) {
@@ -38,8 +38,11 @@
       bottom: 0;
       left: 2.25rem;
     }
+    overflow: hidden;
     background-color: var(--theme-color-bg);
     border: 1px solid var(--theme-color-border);
+    border-radius: 0.25rem;
+    transition: background-color var(--theme-transition-function) var(--theme-transition-duration);
   }
 
   &__results {
@@ -63,19 +66,29 @@
     @include bp-up($bp-up-md) {
       width: 40rem;
     }
+
+    > li {
+      transition: background-color var(--theme-transition-function) var(--theme-transition-duration);
+    }
   }
 
   // NOTE: .has-focus is given by asset of typedoc js
-  &.has-focus > .c-search-form__results {
-    visibility: visible;
-
-    a {
-      display: block;
-      padding: 0.6rem 0.8rem;
+  &.has-focus {
+    .c-search-form__input {
+      background-color: var(--theme-color-clickable-hover-bg);
     }
 
-    > li.current {
-      background-color: var(--theme-color-search-current-select-bg);
+    > .c-search-form__results {
+      visibility: visible;
+
+      a {
+        display: block;
+        padding: 0.6rem 0.8rem;
+      }
+
+      > li.current {
+        background-color: var(--theme-color-search-current-select-bg);
+      }
     }
   }
 }

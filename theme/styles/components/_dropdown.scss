@@ -1,0 +1,24 @@
+.c-dropdown {
+  position: relative;
+
+  &__toggle-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+  }
+
+  &__content {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    display: none;
+    overflow: hidden;
+    background-color: var(--theme-color-bg);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.25rem var(--theme-color-overlay-bg);
+
+    &.is-open {
+      display: block;
+    }
+  }
+}
