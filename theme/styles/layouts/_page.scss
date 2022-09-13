@@ -14,7 +14,7 @@
       bottom: 0;
       left: calc(var(--theme-width-region-sidebar) * -1);
       overflow-x: hidden;
-      transition: left var(--theme-transition-function) var(--theme-traisition-duration);
+      transition: left var(--theme-transition-function) var(--theme-transition-duration);
     }
 
     @include bp-up($bp-up-md) {
