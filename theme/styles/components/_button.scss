@@ -1,6 +1,7 @@
 @use "../mixins/hoverable" as *;
 
 .c-button {
+  padding: 0.35rem;
   appearance: none;
   overflow: hidden;
   color: inherit;
@@ -8,6 +9,10 @@
   border: 1px solid var(--theme-color-border);
   border-radius: 0.4rem;
   transition: background-color var(--theme-transition-function) var(--theme-transition-duration);
+
+  svg {
+    width: 100%;
+  }
 
   @include hoverable() {
     &:hover {

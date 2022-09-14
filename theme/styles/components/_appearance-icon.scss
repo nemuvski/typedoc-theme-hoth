@@ -6,18 +6,18 @@
 
 @include appearance-os() {
   .c-appearance-icon--os {
-    display: inline-block;
+    display: block;
   }
 }
 
 @include appearance-light() {
   .c-appearance-icon--light {
-    display: inline-block;
+    display: block;
   }
 }
 
 @include appearance-dark() {
   .c-appearance-icon--dark {
-    display: inline-block;
+    display: block;
   }
 }

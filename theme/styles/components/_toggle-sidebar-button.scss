@@ -3,6 +3,11 @@
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.125rem;
+  color: var(--theme-color-text);
   background-color: transparent;
   border: 0;
+
+  > svg {
+    width: 100%;
+  }
 }
