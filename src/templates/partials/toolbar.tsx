@@ -27,9 +27,11 @@ const toolbar: TypeDocElement = (context) => {
             type='text'
             inputMode='search'
             tabIndex={0}
-            placeholder="'/' key press for focus"
             name='search-keyword'
           />
+          <kbd class='c-search-form__shortcut' aria-label='Focus the search bar by pressing forward slash'>
+            /
+          </kbd>
           <ul class={`c-search-form__results ${TSD_CLASS_SEARCH_RESULTS}`} />
         </div>
       </div>
