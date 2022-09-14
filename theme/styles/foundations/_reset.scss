@@ -90,6 +90,10 @@ svg {
   vertical-align: middle;
 }
 
+svg:not([fill]) {
+  fill: currentColor;
+}
+
 table {
   border-collapse: collapse;
 }

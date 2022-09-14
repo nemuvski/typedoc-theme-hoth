@@ -21,6 +21,7 @@
     left: 0.5rem;
     z-index: var(--theme-depth-layer-misc);
     display: block;
+    color: inherit;
     transform: translateY(-50%);
 
     > svg {

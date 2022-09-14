@@ -3,6 +3,7 @@
 .c-button {
   appearance: none;
   overflow: hidden;
+  color: inherit;
   background-color: var(--theme-color-bg);
   border: 1px solid var(--theme-color-border);
   border-radius: 0.4rem;
