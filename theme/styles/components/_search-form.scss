@@ -95,6 +95,10 @@
       background-color: var(--theme-color-clickable-hover-bg);
     }
 
+    .c-search-form__shortcut {
+      display: none;
+    }
+
     > .c-search-form__results {
       visibility: visible;
 
