@@ -86,11 +86,16 @@
     }
 
     > li {
-      padding: 0.4rem;
+      padding: 0.3rem;
 
       > a {
+        border: 1px solid transparent;
         border-radius: 0.25rem;
-        transition: background-color var(--theme-transition-function) var(--theme-transition-duration);
+        transition: {
+          property: background-color, border-color;
+          timing-function: var(--theme-transition-function);
+          duration: var(--theme-transition-duration);
+        }
       }
     }
   }
@@ -110,12 +115,13 @@
 
       a {
         display: block;
-        padding: 0.35rem 0.5rem;
+        padding: 0.4rem 0.5rem;
         color: var(--theme-color-text);
       }
 
       > li.current > a {
         background-color: var(--theme-color-search-current-select-bg);
+        border-color: var(--theme-color-clickable-hover-border);
       }
     }
   }

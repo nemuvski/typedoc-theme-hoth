@@ -2,4 +2,7 @@
 
 .c-navigation-list {
   @include reset-list-style();
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }

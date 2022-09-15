@@ -8,7 +8,11 @@
   background-color: var(--theme-color-bg);
   border: 1px solid var(--theme-color-border);
   border-radius: 0.4rem;
-  transition: background-color var(--theme-transition-function) var(--theme-transition-duration);
+  transition: {
+    property: background-color, border-color;
+    timing-function: var(--theme-transition-function);
+    duration: var(--theme-transition-duration);
+  }
 
   svg {
     width: 100%;
@@ -17,6 +21,7 @@
   @include hoverable() {
     &:hover {
       background-color: var(--theme-color-clickable-hover-bg);
+      border-color: var(--theme-color-clickable-hover-border);
     }
   }
 }
