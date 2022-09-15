@@ -1,0 +1,39 @@
+@use "../mixins/hoverable" as *;
+
+.c-accordion {
+  &__summary {
+    position: relative;
+    display: block;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color var(--theme-transition-function) var(--theme-transition-duration);
+
+    @include hoverable() {
+      &:hover {
+        background-color: var(--theme-color-clickable-hover-bg);
+      }
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  &__summary-icon {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    display: block;
+    transition: transform var(--theme-transition-function) var(--theme-transition-duration);
+    transform: translateY(-50%);
+  }
+
+  &[open] .c-accordion__summary-icon {
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  &__content {
+    padding-top: 0.4rem;
+  }
+}

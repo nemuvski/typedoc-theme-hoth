@@ -1,0 +1,5 @@
+@use "../mixins/reset-list-style" as *;
+
+.c-navigation-list {
+  @include reset-list-style();
+}

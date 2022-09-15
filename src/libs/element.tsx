@@ -4,7 +4,7 @@
  * @see {@link https://github.com/TypeStrong/typedoc/blob/master/src/lib/output/themes/lib.tsx}
  */
 
-import { JSX, type Comment, type ReflectionFlags } from 'typedoc'
+import { JSX, type Reflection } from 'typedoc'
 
 export function join<T>(joiner: JSX.Children, list: Array<T>, cb: (x: T) => JSX.Children) {
   const result: JSX.Children = []
@@ -19,22 +19,38 @@ export function join<T>(joiner: JSX.Children, list: Array<T>, cb: (x: T) => JSX.
   return <>{result}</>
 }
 
-export function renderFlags(flags: ReflectionFlags, comment?: Comment) {
-  const allFlags = [...flags]
+export function classNames(names: Record<string, boolean | null | undefined>, extraCss?: string) {
+  const css = Object.keys(names)
+    .filter((key) => names[key])
+    .concat(extraCss || '')
+    .join(' ')
+    .trim()
+    .replace(/\s+/g, ' ')
+  return css.length ? css : undefined
+}
 
-  if (comment) {
-    allFlags.push(...Array.from(comment.modifierTags, (tag) => tag.replace(/@([a-z])/, (x) => x[1].toUpperCase())))
+export function wbr(str: string): (string | JSX.Element)[] {
+  const ret: (string | JSX.Element)[] = []
+  const re = /[\s\S]*?(?:[^_-][_-](?=[^_-])|[^A-Z](?=[A-Z][^A-Z]))/g
+  let match: RegExpExecArray | null
+  let i = 0
+  while ((match = re.exec(str))) {
+    ret.push(match[0], <wbr />)
+    i += match[0].length
+  }
+  ret.push(str.slice(i))
+  return ret
+}
+
+export function renderName(reflection: Reflection) {
+  if (!reflection.name) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return <em>{wbr(reflection.kindString!)}</em>
   }
 
-  return (
-    <>
-      {allFlags.map((item) => {
-        return (
-          <>
-            <code class={`c-tag c-tag--${item}`}>{item}</code>{' '}
-          </>
-        )
-      })}
-    </>
-  )
+  if (reflection.flags.isOptional) {
+    return <>{wbr(reflection.name)}?</>
+  }
+
+  return wbr(reflection.name)
 }

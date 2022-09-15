@@ -8,6 +8,8 @@ import breadcrumb from './partials/breadcrumb'
 import footer from './partials/footer'
 import header from './partials/header'
 import navigation from './partials/navigation'
+import primaryNavigation from './partials/primary-navigation'
+import secondaryNavigation from './partials/secondary-navigation'
 import settings from './partials/settings'
 import toolbar from './partials/toolbar'
 
@@ -32,6 +34,8 @@ export class HothThemeContext extends DefaultThemeRenderContext implements IHoth
   header = bindElement(header, this)
   footer = bindElementNonProps(footer, this)
   navigation = bindElement(navigation, this)
+  primaryNavigation = bindElement(primaryNavigation, this)
+  secondaryNavigation = bindElement(secondaryNavigation, this)
   settings = bindElementNonProps(settings, this)
   toolbar = bindElement(toolbar, this)
 

@@ -24,16 +24,30 @@
 @mixin light-color-props() {
   --theme-color-text: #2c3333;
   --theme-color-sub-text: #636366;
-  --theme-color-link: #1687a7;
+  --theme-color-link: #2d93af;
   --theme-color-border: #f2f2f5;
   --theme-color-unchecked: #d0e7ed;
-  --theme-color-checked: #1687a7;
+  --theme-color-checked: #2d93af;
+  --theme-color-check-mark: #fff;
   --theme-color-bg: #fff;
-  --theme-color-clickable-hover-bg: #f8f8fb;
-  --theme-color-sidebar-bg: #fff;
+  --theme-color-scrollbar-bg: #d0e7ed;
+  --theme-color-clickable-hover-bg: #eef6f8;
+  --theme-color-sidebar-bg: var(--theme-color-bg);
   --theme-color-toolbar-bg: rgba(255 255 255 / 0.88);
   --theme-color-overlay-bg: rgba(0 0 0 / 0.45);
-  --theme-color-search-current-select-bg: rgba(22 135 167 / 0.2);
+  --theme-color-search-current-select-bg: var(--theme-color-clickable-hover-bg);
+
+  // Props for default css of typedoc
+  --colot-text: var(--theme-color-text);
+  --color-icon-background: transparent;
+  --color-ts: #fcb56b;
+  --color-ts-interface: #8bce6e;
+  --color-ts-enum: #6ee6c8;
+  --color-ts-class: #77a9d7;
+  --color-ts-function: #8571b8;
+  --color-ts-namespace: #d35a96;
+  --color-ts-private: #8c8c8f;
+  --color-ts-variable: #3e8bcf;
 }
 @include light-color-scheme() {
   :root {
@@ -46,8 +60,32 @@
 
 // Props for dark appearance
 @mixin dark-color-props() {
-  --theme-color-bg: #001e3c;
   --theme-color-text: #f5f5f8;
+  --theme-color-sub-text: #cacacc;
+  --theme-color-link: #449fb8;
+  --theme-color-border: #202023;
+  --theme-color-unchecked: #96c9d7;
+  --theme-color-checked: #449fb8;
+  --theme-color-check-mark: #f5f5f8;
+  --theme-color-bg: #29292c;
+  --theme-color-scrollbar-bg: #24758c;
+  --theme-color-clickable-hover-bg: rgba(47 111 128 / 0.3);
+  --theme-color-sidebar-bg: var(--theme-color-bg);
+  --theme-color-toolbar-bg: rgba(41 41 44 / 0.96);
+  --theme-color-overlay-bg: rgba(0 0 0 / 0.6);
+  --theme-color-search-current-select-bg: var(--theme-color-clickable-hover-bg);
+
+  // Props for default css of typedoc
+  --colot-text: var(--theme-color-text);
+  --color-icon-background: transparent;
+  --color-ts: #e18727;
+  --color-ts-interface: #63ae43;
+  --color-ts-enum: #3bb395;
+  --color-ts-class: #3677b2;
+  --color-ts-function: #5c4696;
+  --color-ts-namespace: #b42c6f;
+  --color-ts-private: #646467;
+  --color-ts-variable: #0d63af;
 }
 @include dark-color-scheme() {
   :root {

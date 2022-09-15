@@ -1,9 +1,12 @@
 import { JSX } from 'typedoc'
 
 const navigation: TypeDocElement = (context, props) => {
-  const { project } = props
-
-  return <div class='l-nav'></div>
+  return (
+    <div class='l-navigation'>
+      <div class='l-navigation__container l-navigation__container--primary'>{context.primaryNavigation(props)}</div>
+      <div class='l-navigation__container l-navigation__container--secondary'>{context.secondaryNavigation(props)}</div>
+    </div>
+  )
 }
 
 export default navigation

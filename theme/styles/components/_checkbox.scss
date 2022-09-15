@@ -34,8 +34,8 @@
       display: block;
       width: 0.7rem;
       height: 0.35rem;
-      border-bottom: 2px solid var(--theme-color-bg);
-      border-left: 2px solid var(--theme-color-bg);
+      border-bottom: 2px solid var(--theme-color-check-mark);
+      border-left: 2px solid var(--theme-color-check-mark);
       transition: content var(--theme-transition-function) var(--theme-transition-duration);
       transform: translate(0.15rem, calc(-50% - 0.1rem)) rotate(-45deg);
     }
