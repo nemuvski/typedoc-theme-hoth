@@ -1,63 +1,105 @@
-import { JSX, type ContainerReflection, ReflectionType, DeclarationReflection, ReflectionKind } from 'typedoc'
+import { JSX, ReflectionKind, type ContainerReflection, type DeclarationReflection } from 'typedoc'
+import { isDeclarationReflection, isReflectionType } from '../../libs/assertion'
 
-const container: TypeDocElement<ContainerReflection> = (context, props) => {
-  if ([ReflectionKind.TypeAlias, ReflectionKind.Variable].includes(props.model.kind) && props.model instanceof DeclarationReflection) {
-    return context.memberDeclaration(props.model)
+const commentElement: TypeDocChildElement = (context, props) => {
+  if (props.hasComment()) {
+    return <section class='c-section c-section--comment'>{context.comment(props)}</section>
   }
+}
 
+const implementedTypesElement: TypeDocChildElement<DeclarationReflection> = (context, { implementedTypes }) => {
+  if (implementedTypes && implementedTypes.length) {
+    return (
+      <section class='c-section c-section--implemented-types'>
+        <h2 class='c-section__heading'>Implements</h2>
+        <div class='c-section__hierarchy'>
+          <ul class='c-hierarchy'>
+            {implementedTypes.map((item) => (
+              <li class='c-hierarchy__item'>{context.type(item)}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+}
+
+const implementedByElement: TypeDocChildElement<DeclarationReflection> = (context, { implementedBy }) => {
+  if (implementedBy && implementedBy.length) {
+    return (
+      <section class='c-section c-section--implemented-by'>
+        <h2 class='c-section__heading'>Implements</h2>
+        <div class='c-section__hierarchy'>
+          <ul class='c-hierarchy'>
+            {implementedBy.map((item) => (
+              <li class='c-hierarchy__item'>{context.type(item)}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+}
+
+const signaturesElement: TypeDocChildElement<DeclarationReflection> = (context, props) => {
   return (
     <>
-      {props.model.hasComment() && <section class='tsd-panel tsd-comment'>{context.comment(props.model)}</section>}
+      {props.signatures && props.signatures.length && (
+        <section class='c-section c-section--member-signatures'>{context.memberSignatures(props)}</section>
+      )}
 
-      {/*{hasTypeParameters(props.model) && <> {context.typeParameters(props.model.typeParameters)} </>}*/}
+      {props.indexSignature && (
+        <section class={'c-section c-section--index-signature ' + props.cssClasses}>
+          <h2 class='c-section__heading'>Indexable</h2>
 
-      {props.model instanceof DeclarationReflection && (
-        <>
-          {context.hierarchy(props.model.typeHierarchy)}
-
-          {!!props.model.implementedTypes && (
-            <section class='tsd-panel'>
-              <h4>Implements</h4>
-              <ul class='tsd-hierarchy'>
-                {props.model.implementedTypes.map((item) => (
-                  <li>{context.type(item)}</li>
-                ))}
-              </ul>
-            </section>
-          )}
-          {!!props.model.implementedBy && (
-            <section class='tsd-panel'>
-              <h4>Implemented by</h4>
-              <ul class='tsd-hierarchy'>
-                {props.model.implementedBy.map((item) => (
-                  <li>{context.type(item)}</li>
-                ))}
-              </ul>
-            </section>
-          )}
-          {!!props.model.signatures && <section class='tsd-panel'>{context.memberSignatures(props.model)}</section>}
-          {!!props.model.indexSignature && (
-            <section class={'tsd-panel ' + props.model.cssClasses}>
-              <h4 class='tsd-before-signature'>Indexable</h4>
-              <div class='tsd-signature'>
-                <span class='tsd-signature-symbol'>[</span>
-                {props.model.indexSignature.parameters!.map((item) => (
+          <div class='c-signature'>
+            {props.indexSignature.parameters && props.indexSignature.parameters.length && (
+              <>
+                <span class='c-signature__symbol'>[</span>
+                {props.indexSignature.parameters.map((item) => (
                   <>
                     {item.name}: {context.type(item.type)}
                   </>
                 ))}
-                <span class='tsd-signature-symbol'>]: </span>
-                {context.type(props.model.indexSignature.type)}
-              </div>
-              {context.comment(props.model.indexSignature)}
-              {props.model.indexSignature?.type instanceof ReflectionType && context.parameter(props.model.indexSignature.type.declaration)}
-            </section>
-          )}
-          {!props.model.signatures && context.memberSources(props.model)}
+                <span class='c-signature__symbol'>]: </span>
+              </>
+            )}
+            {context.type(props.indexSignature.type)}
+          </div>
+
+          {context.comment(props.indexSignature)}
+
+          {isReflectionType(props.indexSignature?.type) && context.parameter(props.indexSignature.type.declaration)}
+        </section>
+      )}
+
+      {!props.signatures && context.memberSources(props)}
+    </>
+  )
+}
+
+const container: TypeDocElement<ContainerReflection> = (context, props) => {
+  const { model } = props
+
+  if (isDeclarationReflection(model) && [ReflectionKind.TypeAlias, ReflectionKind.Variable].includes(model.kind)) {
+    return context.memberDeclaration(model)
+  }
+
+  return (
+    <>
+      {commentElement(context, model)}
+
+      {isDeclarationReflection(model) && (
+        <>
+          {context.hierarchy(model.typeHierarchy)}
+          {implementedTypesElement(context, model)}
+          {implementedByElement(context, model)}
+          {signaturesElement(context, model)}
         </>
       )}
 
-      {!!props.model.children?.length && context.index(props.model)}
+      {props.model.children?.length && context.index(props.model)}
+
       {context.members(props.model)}
     </>
   )

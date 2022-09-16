@@ -1,4 +1,4 @@
-import { ContainerReflection, DeclarationReflection, SignatureReflection } from 'typedoc'
+import { ContainerReflection, DeclarationReflection, ReflectionType, SignatureReflection } from 'typedoc'
 
 export function isDeclarationReflection(value: unknown): value is DeclarationReflection {
   return value instanceof DeclarationReflection
@@ -10,4 +10,8 @@ export function isSignatureReflection(value: unknown): value is SignatureReflect
 
 export function isContainerReflection(value: unknown): value is ContainerReflection {
   return value instanceof ContainerReflection
+}
+
+export function isReflectionType(value: unknown): value is ReflectionType {
+  return value instanceof ReflectionType
 }
