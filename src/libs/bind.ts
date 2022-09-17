@@ -1,16 +1,7 @@
-import type { HothThemeContext } from '../templates'
-import type { PageEvent, Reflection } from 'typedoc'
+import { JSX, type PageEvent, type Reflection } from 'typedoc'
 
-export function bindElement<P extends Reflection>(elm: TypeDocElement<P>, context: HothThemeContext) {
-  return (props: PageEvent<P>) => elm(context, props)
+export type BindFn<P extends Reflection = Reflection> = (props: PageEvent<P>) => JSX.Element
+
+export function bind<F, L extends Array<unknown>, R>(fn: (f: F, ...a: L) => R, first: F) {
+  return (...r: L) => fn(first, ...r)
 }
-
-export function bindElementNonProps(elm: TypeDocElementNonProps, context: HothThemeContext) {
-  return () => elm(context)
-}
-
-export function bindChildElement<P extends Reflection>(elm: TypeDocChildElement, context: HothThemeContext) {
-  return (props: P) => elm(context, props)
-}
-
-export type BindElementFnReturn = ReturnType<typeof bindElement>

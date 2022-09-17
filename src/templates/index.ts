@@ -1,5 +1,5 @@
-import { DefaultTheme, DefaultThemeRenderContext, type Options, type ProjectReflection, type Renderer } from 'typedoc'
-import { bindChildElement, bindElement, bindElementNonProps, type BindElementFnReturn } from '../libs/bind'
+import { DefaultTheme, DefaultThemeRenderContext, type Options, type Renderer } from 'typedoc'
+import { type BindFn, bind } from '../libs/bind'
 import layout from './layout'
 import container from './pages/container'
 import project from './pages/project'
@@ -14,7 +14,7 @@ import settings from './partials/settings'
 import toolbar from './partials/toolbar'
 
 interface IHothThemeContext {
-  branding: BindElementFnReturn
+  branding: BindFn
 }
 
 export class HothThemeContext extends DefaultThemeRenderContext implements IHothThemeContext {
@@ -23,24 +23,24 @@ export class HothThemeContext extends DefaultThemeRenderContext implements IHoth
   }
 
   // Layout
-  defaultLayout = bindElement(layout, this)
+  defaultLayout = bind(layout, this)
 
   // Page
-  indexTemplate = bindElement<ProjectReflection>(project, this)
-  reflectionTemplate = bindElement(container, this)
+  indexTemplate = bind(project, this)
+  reflectionTemplate = bind(container, this)
 
   // Partial
-  breadcrumb = bindChildElement(breadcrumb, this)
-  header = bindElement(header, this)
-  footer = bindElementNonProps(footer, this)
-  navigation = bindElement(navigation, this)
-  primaryNavigation = bindElement(primaryNavigation, this)
-  secondaryNavigation = bindElement(secondaryNavigation, this)
-  settings = bindElementNonProps(settings, this)
-  toolbar = bindElement(toolbar, this)
+  breadcrumb = bind(breadcrumb, this)
+  header = bind(header, this)
+  footer = bind(footer, this)
+  navigation = bind(navigation, this)
+  primaryNavigation = bind(primaryNavigation, this)
+  secondaryNavigation = bind(secondaryNavigation, this)
+  settings = bind(settings, this)
+  toolbar = bind(toolbar, this)
 
   // Custom partial
-  branding = bindElement(branding, this)
+  branding = bind(branding, this)
 }
 
 class HothTheme extends DefaultTheme {
