@@ -4,7 +4,8 @@
  * @see {@link https://github.com/TypeStrong/typedoc/blob/master/src/lib/output/themes/lib.tsx}
  */
 
-import { JSX, type Reflection } from 'typedoc'
+import { JSX, type Reflection, type TypeParameterReflection } from 'typedoc'
+import { isDeclarationReflection, isSignatureReflection } from './assertion'
 
 export function join<T>(joiner: JSX.Children, list: Array<T>, cb: (x: T) => JSX.Children) {
   const result: JSX.Children = []
@@ -53,4 +54,33 @@ export function renderName(reflection: Reflection) {
   }
 
   return wbr(reflection.name)
+}
+
+export function hasTypeParameters(reflection: Reflection): reflection is Reflection & { typeParameters: TypeParameterReflection[] } {
+  return (
+    (isDeclarationReflection(reflection) || isSignatureReflection(reflection)) &&
+    reflection.typeParameters != null &&
+    reflection.typeParameters.length > 0
+  )
+}
+
+export function renderTypeParametersSignature(typeParameters?: Array<TypeParameterReflection>): JSX.Element {
+  return (
+    <>
+      {!!typeParameters && typeParameters.length > 0 && (
+        <>
+          <span class='tsd-signature-symbol'>{'<'}</span>
+          {join(<span class='tsd-signature-symbol'>{', '}</span>, typeParameters, (item) => (
+            <>
+              {item.varianceModifier ? `${item.varianceModifier} ` : ''}
+              <span class='tsd-signature-type' data-tsd-kind={item.kindString}>
+                {item.name}
+              </span>
+            </>
+          ))}
+          <span class='tsd-signature-symbol'>{'>'}</span>
+        </>
+      )}
+    </>
+  )
 }
