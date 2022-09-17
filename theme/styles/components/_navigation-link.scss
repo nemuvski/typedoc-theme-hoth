@@ -6,10 +6,9 @@
   align-items: center;
   padding: 0.35rem 0.5rem;
   text-decoration: none;
-  border: 1px solid transparent;
   border-radius: 0.25rem;
   transition: {
-    property: background-color, border-color;
+    property: background-color;
     timing-function: var(--theme-transition-function);
     duration: var(--theme-transition-duration);
   }
@@ -17,7 +16,31 @@
   @include hoverable() {
     &:hover {
       background-color: var(--theme-color-clickable-hover-bg);
-      border-color: var(--theme-color-clickable-hover-border);
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &--folder {
+      padding: 0.1rem;
+      color: var(--theme-color-sub-text);
+
+      > svg {
+        width: 100%;
+      }
+    }
+  }
+
+  // NOTE: For tsd-kind-icon
+  > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &:not([fill]) {
+      fill: currentColor;
     }
   }
 }

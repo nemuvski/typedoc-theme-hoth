@@ -64,7 +64,7 @@
   --theme-color-text: #f5f5f8;
   --theme-color-sub-text: #cacacc;
   --theme-color-link: #449fb8;
-  --theme-color-border: #171923;
+  --theme-color-border: rgba(255 255 255 / 0.16);
   --theme-color-unchecked: #96c9d7;
   --theme-color-checked: #449fb8;
   --theme-color-check-mark: #f5f5f8;
@@ -72,7 +72,7 @@
   --theme-color-scrollbar-bg: #24758c;
   --theme-color-clickable-hover-bg: #2d3748;
   --theme-color-clickable-hover-border: #171923;
-  --theme-color-sidebar-bg: var(--theme-color-bg);
+  --theme-color-sidebar-bg: #171923;
   --theme-color-toolbar-bg: rgba(26 32 44 / 0.88);
   --theme-color-overlay-bg: rgba(0 0 0 / 0.6);
   --theme-color-search-current-select-bg: var(--theme-color-clickable-hover-bg);

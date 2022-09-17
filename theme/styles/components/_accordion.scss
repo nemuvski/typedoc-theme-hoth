@@ -6,10 +6,9 @@
     display: block;
     padding: 0.5rem;
     cursor: pointer;
-    border: 1px solid transparent;
     border-radius: 0.25rem;
     transition: {
-      property: background-color, border-color;
+      property: background-color;
       timing-function: var(--theme-transition-function);
       duration: var(--theme-transition-duration);
     }
@@ -17,7 +16,6 @@
     @include hoverable() {
       &:hover {
         background-color: var(--theme-color-clickable-hover-bg);
-        border-color: var(--theme-color-clickable-hover-border);
       }
     }
 
@@ -31,7 +29,6 @@
     top: 50%;
     right: 0.5rem;
     display: block;
-    transition: transform var(--theme-transition-function) var(--theme-transition-duration);
     transform: translateY(-50%);
   }
 

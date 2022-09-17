@@ -1,6 +1,7 @@
 import { JSX, ReflectionKind, type DeclarationReflection, type Reflection } from 'typedoc'
 import { classNames, wbr } from '../../libs/element'
 import chevronRightIcon from '../static/chevron-right-icon'
+import folderIcon from '../static/folder-icon'
 
 export function partition<T>(iter: Iterable<T>, predicate: (item: T) => boolean): [T[], T[]] {
   const left: T[] = []
@@ -38,6 +39,7 @@ const primaryNavigation: TypeDocElement = (context, props) => {
     return (
       <li class={`c-navigation-list__item ${classNames({ current, selected, deprecated: mod.isDeprecated() }, mod.cssClasses)}`}>
         <a class='c-navigation-link' href={context.urlTo(mod)}>
+          <i class='c-navigation-link__icon c-navigation-link__icon--folder'>{folderIcon()}</i>
           {wbr(`${mod.name}${mod.version !== undefined ? ` - v${mod.version}` : ''}`)}
         </a>
         {childModules?.length && <ul class='c-navigation-list'>{childModules.map(link)}</ul>}
@@ -56,6 +58,7 @@ const primaryNavigation: TypeDocElement = (context, props) => {
           <ul class='c-navigation-list'>
             <li class={`c-navigation-list__item ${classNames({ current, selected })}`}>
               <a class='c-navigation-link' href={context.urlTo(props.model.project)}>
+                <i class='c-navigation-link__icon c-navigation-link__icon--folder'>{folderIcon()}</i>
                 {wbr(props.project.name)}
               </a>
               {int.length && <ul class='c-navigation-list'>{int.map(link)}</ul>}

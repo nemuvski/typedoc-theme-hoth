@@ -5,4 +5,11 @@
   padding: 0 0.5rem 4rem;
   font-size: 0.85rem;
   line-height: 1.25;
+
+  &__container {
+    &--primary {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed var(--theme-color-border);
+    }
+  }
 }
