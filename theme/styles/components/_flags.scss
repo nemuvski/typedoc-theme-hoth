@@ -1,0 +1,17 @@
+@use "../mixins/reset-list-style" as *;
+
+.c-flags {
+  @include reset-list-style();
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+
+  &__item {
+    padding: 0.25rem 0.4rem;
+    background-color: var(--theme-color-clickable-hover-bg);
+    border: 1px solid var(--theme-color-clickable-hover-border);
+    border-radius: 0.25rem;
+  }
+}

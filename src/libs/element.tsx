@@ -4,7 +4,7 @@
  * @see {@link https://github.com/TypeStrong/typedoc/blob/master/src/lib/output/themes/lib.tsx}
  */
 
-import { JSX, type Reflection, type TypeParameterReflection } from 'typedoc'
+import { JSX, type Comment, type Reflection, type ReflectionFlags, type TypeParameterReflection } from 'typedoc'
 import { isDeclarationReflection, isSignatureReflection } from './assertion'
 
 export function join<T>(joiner: JSX.Children, list: Array<T>, cb: (x: T) => JSX.Children) {

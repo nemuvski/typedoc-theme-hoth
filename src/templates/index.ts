@@ -5,8 +5,11 @@ import container from './pages/container'
 import project from './pages/project'
 import branding from './partials/branding'
 import breadcrumb from './partials/breadcrumb'
+import comment from './partials/comment'
+import flags from './partials/flags'
 import footer from './partials/footer'
 import header from './partials/header'
+import memberDeclaration from './partials/member.declaration'
 import navigation from './partials/navigation'
 import primaryNavigation from './partials/primary-navigation'
 import secondaryNavigation from './partials/secondary-navigation'
@@ -15,6 +18,7 @@ import toolbar from './partials/toolbar'
 
 interface IHothThemeContext {
   branding: BindFn
+  flags: BindFn
 }
 
 export class HothThemeContext extends DefaultThemeRenderContext implements IHothThemeContext {
@@ -41,6 +45,7 @@ export class HothThemeContext extends DefaultThemeRenderContext implements IHoth
 
   // Custom partial
   branding = bind(branding, this)
+  flags = bind(flags, this)
 }
 
 class HothTheme extends DefaultTheme {
