@@ -5,9 +5,9 @@ const project: TypeDocElement<ProjectReflection> = (context, props) => {
   const readmeContent = readme || []
 
   return (
-    <div class='l-project'>
+    <article class='l-project'>
       <JSX.Raw html={context.markdown(readmeContent)} />
-    </div>
+    </article>
   )
 }
 

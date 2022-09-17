@@ -73,7 +73,7 @@ const signaturesElement: TypeDocChildElement<DeclarationReflection> = (context, 
         </section>
       )}
 
-      {!props.signatures && context.memberSources(props)}
+      {!props.signatures && <section class='c-section c-section--member-sources'>{context.memberSources(props)}</section>}
     </>
   )
 }
@@ -82,11 +82,11 @@ const container: TypeDocElement<ContainerReflection> = (context, props) => {
   const { model } = props
 
   if (isDeclarationReflection(model) && [ReflectionKind.TypeAlias, ReflectionKind.Variable].includes(model.kind)) {
-    return context.memberDeclaration(model)
+    return <article class='l-container l-container--member-declaration'>{context.memberDeclaration(model)}</article>
   }
 
   return (
-    <>
+    <article class='l-container'>
       {commentElement(context, model)}
 
       {isDeclarationReflection(model) && (
@@ -101,7 +101,7 @@ const container: TypeDocElement<ContainerReflection> = (context, props) => {
       {props.model.children?.length && context.index(props.model)}
 
       {context.members(props.model)}
-    </>
+    </article>
   )
 }
 
